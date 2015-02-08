@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Fizz Buzz</title>
+  <meta name="description" content="info-tran.com is the web site of Dave Lindhout, system developer, project leader, consultant, analyst, business process, mentor, change agent, problem solver, idea person">
+  <script src="fizzBuzz.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>Fizz Buzz Example</h1>
+    <form id="fizzbuzz" name="fizzbuzz">
+         <label for="max">Enter Maximum Value For Fizz Buzz To Count To</label>
+        <input type="number" id="max" name="max" min="1" size="3" onchange="fb.run(this.value)"  /><!-- Fizz Buzz is run when the field is exited with either return or tab key-->
+        <input type="number" id="min" name="min" hidden /><!--A second field is need to capture the return key so that the form is not automatically submitted.-->
+       	<input type="button" value="Run Fizz Buzz" name="run" id="run" onmouseup="fb.run(document.forms.fizzbuzz.max.value)" /><!--The button is superfluous, but it looks pretty--> 
+    </form>
+    <div id="asText">
+    </div>
+    <div id="asJSON">
+    </div>
+ 	<script type="text/javascript">
+ 	//stopRKey captures the return key to prevent the form from being submitted
+    function stopRKey(evt) { 
+      var evt = (evt) ? evt : ((event) ? event : null); 
+      var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+      if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+    } 
+    document.onkeypress = stopRKey;
+    fb = new FizzBuzz();//This creates the class instance, executed when the page is loaded.
+	</script>
+</body>
+</html>
